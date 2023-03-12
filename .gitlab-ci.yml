@@ -1,0 +1,27 @@
+# production_job:
+#   stage: deploy
+#   only:
+#     - master
+#   before_script:
+#     - mkdir -p ~/.ssh
+#     - echo -e "" > ~/.ssh/id_rsa
+#     - chmod 600 ~/.ssh/id_rsa
+
+#   script:
+#     - bash .gitlab-main.sh
+
+#   environment:
+#     name: production
+#     url: http://44.196.57.246
+#
+
+development_deploy:
+  stage: deploy
+  only:
+    - dev
+  script:
+    - tmux kill-session -t web-app
+    - cp -R * /var/www/web-app
+    - cd /var/www/web-app
+    - npm install
+    - tmux new-session -d -s web-app 'npm run start'

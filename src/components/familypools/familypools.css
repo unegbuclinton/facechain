@@ -1,0 +1,33 @@
+.filter-toggle li:not(:last-child) {
+  border-right: 2px solid #78788032;
+}
+.filter-toggle .active{
+  @apply bg-primary rounded-md 
+}
+
+.fp-stripe{
+  @apply bg-[url('../../assets/images/familypools/stripe.png')] bg-no-repeat bg-cover bg-center
+
+}
+
+.trader-list li:not(:first-child){
+   margin-left: -30px;
+}
+
+text.CircularProgressbar-text {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.fp-avatar-container{
+  border: 2px solid white;
+  border-right: 2px solid transparent;
+  border-radius: 50%;
+  transform: rotate(-45deg);
+}
+
+.fp-avatar{
+  transform: rotate(45deg);
+}
+

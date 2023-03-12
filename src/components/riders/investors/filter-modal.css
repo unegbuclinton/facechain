@@ -1,0 +1,32 @@
+
+.filter-modal{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.629);
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index:300;
+    top: 0;
+    left: 0;
+}
+
+.filter-card {
+ background-color: #1E1F21;
+ border-radius: 5px;
+ padding: 20px;
+ overflow: auto;
+}
+
+.filter-inactive{
+    @apply flex justify-center w-[100%] px-4 py-2 text-[14px] text-[#979797] md:basis-[48%] bg-[#292929] cursor-pointer;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filter-active {
+    @apply flex justify-center w-[100%] px-4 py-2 text-[14px] text-white md:basis-[48%] bg-[#01ab6c38] border-[1px] border-[#01AB6C] cursor-pointer;
+    cursor: pointer;
+    font-size: 14px;
+}

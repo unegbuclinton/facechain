@@ -1,0 +1,11 @@
+.news-chip-inactive{
+    @apply py-2 px-6 bg-darkGrey rounded-[20px] text-white mr-[12px] mb-4;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.news-chip-active{
+    @apply py-2 px-6 bg-primary rounded-[20px] text-white mr-[12px] mb-4;
+    cursor: pointer;
+    font-size: 14px;
+}

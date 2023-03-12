@@ -1,0 +1,10 @@
+.b-active-nav::after{
+    content: '';
+    @apply bg-primary w-full h-1 absolute left-0 bottom-0 rounded-b
+}
+.b-nav-item{
+    @apply text-xs mt-2 transition-all hover:text-primary cursor-pointer hover:fill-primary text-gray-400
+}
+.b-active-nav{
+    @apply font-semibold text-primary
+}

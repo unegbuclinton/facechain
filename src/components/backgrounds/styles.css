@@ -1,0 +1,7 @@
+.top-star{
+    @apply hidden lg:block absolute top-10 left-10;
+}
+
+.bottom-star{
+    @apply hidden lg:block absolute bottom-10 right-10;
+}

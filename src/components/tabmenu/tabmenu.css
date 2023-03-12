@@ -1,0 +1,17 @@
+.tab-menu{
+    @apply bg-[url('../../assets/images/header/stars.svg')];
+    cursor: pointer;
+}
+
+.tab-menu-item{
+    @apply text-white pt-6 pb-4 sm:px-7 px-1 sm:px-3 mx-1  sm:mx-2 relative text-xs md:text-sm text-gray-400 flex items-center hover:text-primary 
+}
+
+.t-menu-active::after{
+    content: '';
+    @apply bg-primary w-full h-0.5 absolute left-0 bottom-0 rounded-t-2xl
+}
+
+.t-menu-active{
+    @apply text-primary font-bold text-lg 
+}

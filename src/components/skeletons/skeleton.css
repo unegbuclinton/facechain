@@ -1,0 +1,55 @@
+.skeleton {
+  @apply bg-[#2f3033] my-2 p-2 rounded;
+  -webkit-animation: color-change-2x 0.5s linear infinite alternate both;
+  animation: color-change-2x 0.5s linear infinite alternate both;
+}
+
+.skeleton.text {
+  @apply w-full h-3;
+}
+
+.skeleton.title {
+  @apply w-1/2 h-5 mb-4;
+}
+
+.skeleton.avatar {
+  @apply w-14 h-14 rounded-full;
+}
+
+.skeleton.media {
+  @apply w-full h-40;
+}
+.skeleton.cta {
+  @apply w-5 h-5 rounded-full mr-2;
+}
+.skeleton.optionsmore {
+  @apply w-0 h-5;
+}
+.skeleton.avatartitle {
+  @apply w-24 h-1 my-0;
+}
+.skeleton.avatardesc {
+  @apply w-24 h-1 my-1;
+}
+.skeleton.mediumtext {
+  @apply w-1/2 h-1 my-0;
+}
+
+/* Skeleton  Animation*/
+
+@-webkit-keyframes color-change-2x {
+  0% {
+    @apply bg-[#2f3033];
+  }
+  100% {
+    @apply bg-[#2f303380]/[0.5];
+  }
+}
+@keyframes color-change-2x {
+  0% {
+    @apply bg-[#2f3033];
+  }
+  100% {
+    @apply bg-[#2f303380]/[0.5];
+  }
+}

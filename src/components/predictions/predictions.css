@@ -1,0 +1,278 @@
+.filter-modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: none; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .filter-modal-content {
+    margin: 10% auto; /* 15% from the top and centered */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin-right: 15px;
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  background-image: linear-gradient(#01AB6C, #01AB6C);
+  /* background-size: 70% 100%; */
+  background-repeat: no-repeat;
+}
+
+/* Input Thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background .3s ease-in-out;
+}
+
+input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background .3s ease-in-out;
+}
+
+input[type="range"]::-ms-thumb {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background .3s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #bebebe;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: #bebebe;
+}
+
+input[type="range"]::-ms-thumb:hover {
+  background: #bebebe;
+}
+
+/* Input Track */
+input[type=range]::-webkit-slider-runnable-track  {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+input[type=range]::-moz-range-track {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+input[type="range"]::-ms-track {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+
+.currency-list{
+    scrollbar-width: thin;          /* "auto" or "thin" */
+    scrollbar-color: #01AB6C #3C3E43;   /* scroll thumb and track */ 
+}
+
+.addpredictionform:hover .currency-list::-webkit-scrollbar-track{
+    background: #3c3e4322; 
+   
+}
+
+.addpredictionform:hover .currency-list::-webkit-scrollbar-thumb{
+  background-color: #01AB6C;
+}
+.currency-list::-webkit-scrollbar {
+  width: 5px;               /* width of the entire scrollbar */
+}
+
+.currency-list::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+.currency-list::-webkit-scrollbar-thumb {
+  background-color: transparent;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+
+}
+
+
+.flatpickr-input, .predictprice input{
+  width: 100%;
+  background: #1E1F21;
+  border-bottom: 1px solid rgba(191, 191, 195, .25);
+  font-size: 14px;
+  padding: 14px 0 14px 0;
+  outline: none;
+
+}
+.flatpickr-input{
+  padding-left: 30px;
+}
+
+
+
+
+/* The pair-radio */
+.pair-radio {
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.pair-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  right: 0;
+  /* height: 25px;
+  width: 25px; */
+  background-color: transparent;
+  border-radius: 50%;
+  border: 2px solid 
+  #BFBFC3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* On mouse-over, add a grey background color */
+.pair-radio:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.pair-radio input:checked ~ .checkmark {
+  background-color: #01AB6C;
+  border: 2px solid  #01AB6C;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  background: #01AB6C;
+  
+}
+
+/* Show the indicator (dot/circle) when checked */
+.pair-radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.pair-radio .checkmark:after {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #01AB6C;
+  border: 3px solid #1E1F21;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.predictionButton{
+  @apply  w-[40%] sm:flex-initial  bg-[url('../../assets/images/predictions/Ellipse.svg')] bg-no-repeat bg-cover p-5 self-end
+
+}
+.activeprogress-dot{
+  margin: 0.25rem;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: #01AB6C;
+
+}
+.checkprediction_icon path{
+  fill: #FF8F75;
+}
+.checkprediction_icon2 path{
+  fill: #22C077;
+}
+.flatpickr-days, .flatpickr-time, .flatpickr-day, .flatpickr-current-month, .flatpickr-prev-month, .flatpickr-next-month, .flatpickr-weekdays, .flatpickr-weekday, .flatpickr-monthDropdown-month, .flatpickr-monthDropdown-months, .flatpickr-month{
+  background-color: rgba(14, 15, 16, 1) !important
+}
+.flatpickr-day{
+  border: none !important;
+}
+.selected{
+  background-color: rgba(14, 15, 16, 1) !important;
+  border:none !important;
+  color: rgba(1, 171, 108, 1) !important;
+  font-size: 20px;
+}
+flatpickr-time input:hover, .flatpickr-time .flatpickr-am-pm:hover, .flatpickr-time input:focus, .flatpickr-time .flatpickr-am-pm:focus, .flatpickr-hour:hover, .flatpickr-minute:hover, .flatpickr-hour:focus, .flatpickr-minute:focus, .flatpickr-monthDropdown-month:hover, .cur-year:hover, .cur-year:focus, .flatpickr-current-month{
+  background: rgba(14, 15, 16, 1) !important;
+  color: rgba(1, 171, 108, 1) !important;
+}
+.flatpickr-prev-month svg:hover, .flatpickr-next-month svg:hover, .flatpickr-prev-month svg:focus, .flatpickr-next-month svg:focus{
+  fill: rgba(1, 171, 108, 1) !important;
+}
+
+.flatpickr-next-month:hover svg, .flatpickr-prev-month:hover svg{
+  fill: rgba(1, 171, 108, 1) !important;
+}

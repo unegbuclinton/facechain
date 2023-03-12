@@ -1,0 +1,22 @@
+
+.h-active-nav{
+    @apply font-semibold text-primary
+}
+
+header {
+    @apply h-20 sm:h-16 lg:h-auto bg-[url('../../assets/images/header/stars.svg')] bg-repeat flex flex-row justify-between items-center  border-b border-gray-800 z-[101] px-3 sm:px-14 overflow-hidden;
+    transition: transform 150ms ease-in-out;
+}
+
+header nav li{
+    @apply py-6
+}
+
+.h-nav-item{
+    @apply px-3 mx-5 transition-all hover:text-primary cursor-pointer hover:fill-primary
+}
+
+.h-active-nav::after{
+    content: '';
+    @apply bg-primary w-full h-1 absolute left-0 bottom-0 rounded-t
+}

@@ -1,0 +1,11 @@
+.step2-tab-inactive{
+    @apply flex justify-center items-center text-white h-[36px] md:w-[50%] w-[50%];
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.step2-tab-active {
+    @apply rounded-[4px] flex justify-center items-center h-[36px] md:w-[50%] w-[50%] bg-primary text-black;
+    cursor: pointer;
+    font-size: 14px;
+}

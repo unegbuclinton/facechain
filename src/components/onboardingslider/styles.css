@@ -1,0 +1,12 @@
+.next-button{
+    @apply bg-primary w-10 h-10 p-10 inline-block rounded-full flex justify-center items-center font-buttons text-black font-bold cursor-pointer
+}
+
+.active-dot{
+    @apply w-2 h-2 rounded-full bg-white m-1
+}
+
+.inactive-dot{
+    @apply w-2 h-2 rounded-full bg-inactive m-1
+}
+  
