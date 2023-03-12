@@ -18,11 +18,6 @@ const Posts = () => {
       setIsLoading(false);
     }, 1500);
     return () => clearTimeout(timer);
-    // const getPosts = () => {
-    //   fetchPosts();
-    // };
-    // getPosts();
-    // return () => source.cancel('Posts component Unmounted');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -32,6 +32,7 @@
     "react-scripts": "^5.0.0",
     "react-share": "^4.4.0",
     "react-toastify": "^8.2.0",
+    "redux-persist": "^6.0.0",
     "save-dev": "^0.0.1-security",
     "web-vitals": "^2.1.4"
   },

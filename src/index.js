@@ -1,31 +1,25 @@
-// Import Dependency 
+// Import Dependency
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './languages/i18next'
+import './languages/i18next';
 
-import { AuthContextProvider } from './context/authcontext';
-import { PostContextProvider } from './context/postcontext';
-
-// Import Component 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// Import Styling 
 import './index.css';
 
-// import your fontawesome library
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import './icons';
-import { PredictionContextProvider } from './context/predictioncontext';
+import store, { persistor } from './store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <PostContextProvider>
-        <PredictionContextProvider>
-          <App />
-        </PredictionContextProvider>
-      </PostContextProvider>
-    </AuthContextProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

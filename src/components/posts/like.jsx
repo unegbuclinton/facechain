@@ -6,18 +6,16 @@ import whiteHeart from '../../assets/images/post/heart.svg';
 import greenHeart from '../../assets/images/post/heartgreen.svg';
 
 /**import hooks */
-import { useAuthContext } from '../../hooks/auth/useauthcontext';
 import useLikePost from '../../hooks/post/uselikepost';
 
 const Like = ({ post, postId }) => {
   const [like, setLike] = useState(false);
   const { likePost, error } = useLikePost();
   const [numberOfLikes, setNumberOfLikes] = useState(null);
-  const { user } = useAuthContext();
 
   /* fetch likes on mount */
   useEffect(() => {
-    setLike(post?.likes?.some((i) => i.user_id === user.id));
+    // setLike(post?.likes?.some((i) => i.user_id === user.id));
     if (post?.likes) {
       setNumberOfLikes(post.likes.length);
     } else {

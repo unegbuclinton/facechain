@@ -404,6 +404,12 @@ body {
   background-repeat: no-repeat;
 }
 
+.preview-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 .media-content.mobile {
   margin-top: 1rem;
 }
@@ -415,6 +421,7 @@ body {
   right: 2%;
   bottom: auto;
   cursor: pointer;
+  z-index: 10;
 }
 
 .create-post-mobile-modal {

@@ -2,10 +2,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 /* import react dependencies */
-import { useEffect, useRef, useState } from 'react';
-
-import useCreatePost from '../../hooks/post/usecreatepost';
-import useFetchPosts from '../../hooks/post/usefetchpost';
+import { useRef, useState } from 'react';
 
 /* import images */
 import backIcon from '../../assets/images/post/backIcon.svg';
@@ -15,12 +12,11 @@ import photoIcon from '../../assets/images/post/photoIcon.svg';
 import videoIcon from '../../assets/images/post/videoIcon.svg';
 
 /* import styling */
-import { useAuthContext } from '../../hooks/auth/useauthcontext';
-import { warning } from '../common/toast/toast';
+import { useDispatch } from 'react-redux';
+import { createNewPost } from '../../redux/postSlice';
 import './post.css';
 
 const CreatePostModal = ({ createPostFunc }) => {
-  const { user } = useAuthContext();
   const photoInput = useRef();
   const videoInput = useRef();
   const [hasPhoto, setHasPhoto] = useState(false);
@@ -29,9 +25,9 @@ const CreatePostModal = ({ createPostFunc }) => {
   const [previewImage, setPreviewImage] = useState(null);
   const [previewVideo, setPreviewVideo] = useState(null);
   const [description, setDescription] = useState('');
-  const { fetchPosts } = useFetchPosts();
+  const [isLoading] = useState(false);
 
-  const { isLoading, isUploaded, createPost } = useCreatePost();
+  const dispatch = useDispatch();
   const closeCreatePostModal = () => {
     createPostFunc(false);
   };
@@ -63,52 +59,31 @@ const CreatePostModal = ({ createPostFunc }) => {
 
   const pickedFile = (e) => {
     const file = e.target.files[0];
-    setPreviewImage(file);
-    // previewFile(file);
+    previewFile(file);
   };
 
-  // const previewFile = (file) => {
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   console.log(reader.readAsDataURL(file));
-  //   reader.onloadend = () => {
-  //     setPreviewImage(reader.result);
-  //     setHasPhoto(true);
-  //   };
-  // };
+  const previewFile = (file) => {
+    const img = URL.createObjectURL(file);
+    setPreviewImage(img);
+  };
 
   const pickedFile2 = (e) => {
-    // let file = e.target.files[0];
-    // let blobURL = URL.createObjectURL(file);
-    // console.log(blobURL);
-    // setPreviewVideo(blobURL);
-    // setHasVideo(true);
+    let file = e.target.files[0];
+    let blobURL = URL.createObjectURL(file);
+    setPreviewVideo(blobURL);
+    setHasVideo(true);
   };
 
   const submitPost = () => {
-    if (hasText) {
-      createPost(description);
-    } else {
-      warning('Please write something');
-    }
+    const post = {
+      desc: description,
+      image: previewImage,
+      video: previewVideo,
+    };
+    dispatch(createNewPost(post));
+    closeCreatePostModal();
   };
 
-  useEffect(() => {
-    if (isUploaded) {
-      closeCreatePostModal();
-      fetchPosts();
-    }
-    return () => {
-      setPreviewImage(null);
-      setPreviewVideo(null);
-      setHasPhoto(false);
-      setHasVideo(false);
-      setDescription('');
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isUploaded, fetchPosts]);
-
-  console.log(previewImage);
   return (
     <>
       {/* create post modal web view */}
@@ -142,9 +117,9 @@ const CreatePostModal = ({ createPostFunc }) => {
                 <div className="media-card mb-6">
                   <div
                     className="media-content"
-                    // style={{ backgroundImage: `url(${previewImage})` }}
+                    style={{ backgroundImage: `url(${previewImage})` }}
                   >
-                    <img src={previewImage} alt="" />
+                    <img src={previewImage} alt="" className="preview-img" />
                     <img
                       onClick={deletePickedImage}
                       src={mediaCloseIcon}
@@ -164,7 +139,6 @@ const CreatePostModal = ({ createPostFunc }) => {
                     style={{ backgroundImage: `url(${previewVideo})` }}
                   >
                     <video src="previewVideo" width="320" height="240" controls>
-                      {' '}
                       Your browser does not support the video tag.
                     </video>
                     <img
@@ -187,7 +161,6 @@ const CreatePostModal = ({ createPostFunc }) => {
                 }
                 onClick={submitPost}
               >
-                {' '}
                 {isLoading ? (
                   <FontAwesomeIcon
                     icon={faSpinner}
@@ -276,7 +249,7 @@ const CreatePostModal = ({ createPostFunc }) => {
         <div className="post-card create-post-mobile">
           <div className="profile-image create-post">
             <div className="create-post-avater create-post"></div>
-            <div className="text-block-3">{user && user.fullname}</div>
+            {/* <div className="text-block-3">{user && user.fullname}</div> */}
           </div>
           <div className="create-post-action-form w-form">
             <form id="email-form">

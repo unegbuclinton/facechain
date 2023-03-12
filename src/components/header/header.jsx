@@ -16,11 +16,9 @@ import Icon from '../icons/icons';
 // Import Styling
 import './header.css';
 
-import { useAuthContext } from '../../hooks/auth/useauthcontext';
 // import { useLogout } from '../../hooks/auth/uselogout';
 
 const Header = () => {
-  const { user } = useAuthContext();
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
   //   const { logout } = useLogout();
@@ -124,7 +122,7 @@ const Header = () => {
               setShowDropdown(!showDropdown);
             }}
           />
-          <p className="hidden 2lg:block">{user && user.fullname}</p>
+          {/* <p className="hidden 2lg:block">{user && user.fullname}</p> */}
           <FontAwesomeIcon
             className="text-greyText ml-2 hidden sm:block cursor-pointer"
             icon={faCaretDown}
