@@ -1,11 +1,9 @@
 import HedgeHeader from "./hedge-header";
-
 import { useState } from "react";
 import RangeSlider from "../../common/rangeslider/rangeslider";
 
 const HedgeStep2 = ({ currentStep, proceedStep }) => {
   const backHandler = () => {};
-  const actionHandler = () => {};
   const [value, setValue] = useState(500);
   const [value2, setValue2] = useState(4);
 

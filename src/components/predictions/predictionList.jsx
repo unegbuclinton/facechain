@@ -3,7 +3,6 @@ import "./predictions.css";
 
 // Import Asset Images
 import Icon from "../icons/icons";
-import moreDots from "../../assets/images/post/more-dots.svg";
 
 /* Import images */
 import avatar from "../../assets/images/header/avatar.jpg";
@@ -12,17 +11,15 @@ import avatar from "../../assets/images/header/avatar.jpg";
 import Comment from "../common/comments/comment";
 import More from "./more/moreoptions";
 import MoreMobile from "./more/moreoptionsmobile";
-import DeletePrediction from "./deleteprediction/deleteprediction";
 
 /* import dependencies */
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { useState, useRef, useEffect } from "react";
-import SharePrediction from "./share/share";
 
 const PredictionList = () => {
   const [predictionId, setPredictionId] = useState("");
-  const [predictions, setPredictions] = useState([]);
+  const [predictions] = useState([]);
   const [moreMobile, setMoreMobile] = useState(false);
   // check for resolution and set is mobile
   const [isMobile, setIsMobile] = useState(
@@ -41,6 +38,7 @@ const PredictionList = () => {
     setPredictionId(predictions[index].id);
   };
 
+  console.log(predictionId);
   //   useEffect(() => {
   //     setPredictions(data);
   //   }, [data]);

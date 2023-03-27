@@ -1,4 +1,3 @@
-import SinglePost from "../components/posts/singlepost/singlepost";
 import BottomNavigation from "../components/bottomnav/bottomnav";
 import Header from "../components/header/header";
 import Topbar from "../components/rider-profile/top-bar";

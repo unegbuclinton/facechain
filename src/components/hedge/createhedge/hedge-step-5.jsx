@@ -3,7 +3,7 @@ import HedgeHeader from "./hedge-header";
 
 const HedgeStep5 = ({ currentStep, proceedStep }) => {
   const backHandler = () => {};
-  const actionHandler = () => {};
+
   return (
     <>
       <HedgeHeader

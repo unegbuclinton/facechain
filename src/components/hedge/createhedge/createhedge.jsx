@@ -9,6 +9,7 @@ import HedgeStep2 from "./hedge-step-2";
 import HedgeStep3 from "./hedge-step-3";
 import HedgeStep4 from "./hedge-step-4";
 import HedgeStep5 from "./hedge-step-5";
+import ExchangeModal from "../../crypto-exchange/exchange-modal";
 
 const Createhedge = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -26,9 +27,9 @@ const Createhedge = () => {
 
   return (
     <div className="bg-black h-screen overflow-auto ">
-      {/* {modal ? (
+      {modal ? (
         <ExchangeModal proceedStep={proceedStep} modalHandler={modalHandler} />
-      ) : null} */}
+      ) : null}
       <Header />
       <div className="flex justify-center overflow-auto mt-24 w-[90%] md:w-2/3 m-auto mb-4 pb-20">
         <div

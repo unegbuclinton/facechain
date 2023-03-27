@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChooseDeadline from "./choosedeadline";
 import ChoosePair from "./choosepair/choosepair";
@@ -32,13 +32,13 @@ const CreateVoteForm = () => {
     if (!isSelected) {
       setSelectedPairs([...selectedPairs, item]);
     } else {
-      setSelectedPairs(selectedPairs.filter((x) => x.id != item.id));
+      setSelectedPairs(selectedPairs.filter((x) => x.id !== item.id));
     }
   };
 
   const handleNext = () => {
     //if topic is sell include 4th tab
-    if (topic == "Sell" || topic == "Withdraw") {
+    if (topic === "Sell" || topic === "Withdraw") {
       if (activeTab < 4) setActiveTab(activeTab + 1);
       if (activeTab === 4) {
         navigate("/hedge/hedge-details", {
@@ -76,7 +76,7 @@ const CreateVoteForm = () => {
           <button onClick={handleCancel}>Cancel</button>
           <p>{tabTitles[activeTab]}</p>
           <button className="text-primary" onClick={handleNext}>
-            {topic == "Sell" || topic == "Withdraw"
+            {topic === "Sell" || topic === "Withdraw"
               ? activeTab === 4
                 ? "Create Vote"
                 : "Next"

@@ -34,7 +34,7 @@ const CreateVoteForm = () => {
 
   const handleNext = () => {
     //if topic is sell include 4th tab
-    if (topic == "Sell") {
+    if (topic === "Sell") {
       if (activeTab < 4) setActiveTab(activeTab + 1);
       if (activeTab === 4) {
         navigate("/family-pools/family-pool-details", {
@@ -73,7 +73,7 @@ const CreateVoteForm = () => {
           <button onClick={handleCancel}>Cancel</button>
           <p>{tabTitles[activeTab]}</p>
           <button className="text-primary" onClick={handleNext}>
-            {topic == "Sell"
+            {topic === "Sell"
               ? activeTab === 4
                 ? "Create Vote"
                 : "Next"

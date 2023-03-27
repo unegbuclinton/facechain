@@ -1,5 +1,4 @@
 // Import Dependency
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
 // Import Asset Images
@@ -30,11 +29,7 @@ const FamilyPoolCardPublic = ({ data }) => {
       className="flex flex-wrap w-full flex-col bg-darkGrey md:w-[48%] mb-8 h-[400px] rounded-lg overflow-hidden"
       key={index}
     >
-      <img
-        className="h-[55%] object-cover"
-        src={poolBackground}
-        alt="family pool backgroud image"
-      />
+      <img className="h-[55%] object-cover" src={poolBackground} alt="family" />
       <div className="flex justify-between px-6 py-4">
         <div className="w-[60%] mr-2">
           <p className="text-xl text-white line-clamp-1">{pool.poolname}</p>

@@ -1,5 +1,4 @@
 import HedgeHeader from "./hedge-header";
-
 import Search from "../../riders/search";
 import "./checkbox.css";
 import MemberTile from "./member-tile";

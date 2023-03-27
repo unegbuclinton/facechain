@@ -1,7 +1,5 @@
 // Import Dependency
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { useState } from "react";
 //import Fontawesome
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,8 +15,6 @@ import predictionValidator from "./validators";
 // import useCreatePrediction from "../../../hooks/prediction/usecreateprediction";
 import getNumberOfDays from "./datehelper";
 
-// import the prediction array
-import predictionData from "../predictiondata";
 // push into your array on this page
 
 const AddPredictionForm = () => {
@@ -31,16 +27,12 @@ const AddPredictionForm = () => {
   const [endPeriod, setEndPeriod] = useState(
     startPeriod ? new Date(startPeriod).fp_incr(1) : new Date()
   );
-  const [isLoading, setIsLoading] = useState(false);
-  const [startPrice, setStartPrice] = useState(35000);
-  const [hasTab, setHasTab] = useState(null);
+  const [isLoading] = useState(false);
+  const [startPrice] = useState(35000);
   const [endPrice, setEndPrice] = useState("");
-  const navigate = useNavigate();
-  //   const { isLoading, error, isUploaded, setIsUploaded, createPrediction } =
-  //     useCreatePrediction();
 
-  const { diffInDays, diffInHours, diffInMinutes, days } =
-    getNumberOfDays(endPeriod);
+  const { days } = getNumberOfDays(endPeriod);
+  console.log(days);
 
   //expected Rate Change
   let startprice = parseFloat(startPrice);
@@ -67,12 +59,6 @@ const AddPredictionForm = () => {
   };
 
   const handleSubmit = () => {
-    const prediction = {
-      currencyPair,
-      startPrice,
-      endPrice: expectedprice,
-      days,
-    };
     // createPrediction(prediction);
   };
 

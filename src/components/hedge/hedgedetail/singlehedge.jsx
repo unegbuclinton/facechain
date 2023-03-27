@@ -1,15 +1,11 @@
 import CurrentShare from "./currentshare";
-import Invites from "./invites";
 import PoolMessages from "./messages";
 import CreateVoteButton from "./createvotebutton";
-import inviteData from "./mockdata";
 import Vote from "../createvote/voteitem/vote";
 import { useLocation } from "react-router-dom";
 const SingleHedge = () => {
   const { state } = useLocation();
-  // destructure state if state is not null
   const { selectedPairs } = state || {};
-  // console.log(selectedPairs)
   return (
     <div>
       <CurrentShare />

@@ -22,7 +22,7 @@ const HedgeProfile = () => {
   const [tabArray] = useState(tabs);
 
   // temporary admin check
-  const [admin, setAdmin] = useState(false);
+  const [admin] = useState(false);
 
   const tabHandler = (value) => {
     setCurrentTab(value);

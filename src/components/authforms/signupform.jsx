@@ -2,9 +2,7 @@
 import {
   faEye,
   faEyeSlash,
-  faCheck,
   faSpinner,
-  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
@@ -69,7 +67,7 @@ const SignupForm = () => {
 
   function submitForm(e) {
     e.preventDefault();
-    // setIsLoading(true);
+    setIsLoading(true);
     if (fullname && email) {
       const data = {
         fullname: fullname,
@@ -79,7 +77,7 @@ const SignupForm = () => {
       if (password && checkPasswordStrength(e)) {
         dispatch(createNewUser(data));
         navigate("/login");
-        // setIsLoading(false);
+        setIsLoading(false);
       }
     } else {
       toast.error("Please fill in all fields");

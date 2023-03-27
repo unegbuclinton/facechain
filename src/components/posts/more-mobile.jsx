@@ -1,9 +1,4 @@
 /* import components */
-import Publicpost from "./publicpost";
-import Personalpost from "./personalpost";
-
-/* import user context hook */
-// import { useAuthContext } from "../../hooks/auth/useauthcontext";
 
 /** import dependencies */
 import { useEffect, useState } from "react";
@@ -11,7 +6,7 @@ import { useEffect, useState } from "react";
 /* import image */
 import moreDots from "../../assets/images/post/more-dots.svg";
 
-const MoreMobile = ({ user_id }) => {
+const MoreMobile = () => {
   //   const { user } = useAuthContext();
   const [isOpen, setIsOpen] = useState(false);
   const toggleMore = () => {
