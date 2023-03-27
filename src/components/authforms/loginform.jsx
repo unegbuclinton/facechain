@@ -3,24 +3,24 @@ import {
   faEye,
   faEyeSlash,
   faSpinner,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 // Import Assts Images
-import googleIcon from '../../assets/images/login/google-icon.svg';
-
-// import useSignin from '../../hooks/auth/usesignin';
+import googleIcon from "../../assets/images/login/google-icon.svg";
+import { loggedInUser } from "../../redux/authSlice";
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [inputValues, setInputValues] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  // const { isLoading, error, signIn } = useSignin();
-
+  const dispatch = useDispatch();
+  const { authPass } = useSelector((state) => state.auth);
   function toggleVisiblity() {
     setShow((prevShow) => !prevShow);
   }
@@ -31,18 +31,23 @@ const LoginForm = () => {
 
   function submitForm(e) {
     e.preventDefault();
-    if (!inputValues) return toast.error('Please fill in all fields');
+    setIsLoading(true);
+    if (!inputValues) return toast.error("Please fill in all fields");
     const { email, password } = inputValues;
-    if (email === 'test@test.com' && password === 'password12345') {
-      setIsLoading(true);
+    const authUser = authPass.find(
+      (user) => user.email === email && user.password === password
+    );
+    if (authUser) {
+      const data = { email, password };
+      dispatch(loggedInUser(data));
       const timer = setTimeout(() => {
         setIsLoading(false);
-        navigate('/home');
+        navigate("/home");
       }, 1000);
       return () => clearTimeout(timer);
-      // signIn(email, password);
     } else {
-      toast.error('Username/Password is not correct');
+      toast.error("Username/Password is not correct");
+      setIsLoading(false);
     }
   }
 
@@ -70,7 +75,7 @@ const LoginForm = () => {
           <input
             className="auth-input placeholder-transparent peer"
             name="password"
-            type={show ? 'text' : 'password'}
+            type={show ? "text" : "password"}
             placeholder="example@mail.com"
             required
             onChange={handleChange}
@@ -97,7 +102,7 @@ const LoginForm = () => {
               className=" cursor-pointer fa-spin fa-pulse"
             />
           ) : (
-            'Log In'
+            "Log In"
           )}
         </button>
       </form>
@@ -107,7 +112,7 @@ const LoginForm = () => {
         <hr className="w-1/3 border-t border-gray-500" />
       </div>
       <div>
-        <button className="text-white text-lg w-full border px-10 rounded-full flex flex-row justify-center py-3">
+        <button className="text-sm text-white sm:text-lg w-full border px-10 rounded-full flex flex-row justify-center py-3">
           <img className="self-center mr-5" src={googleIcon} alt="" />
           Sign in with Google
         </button>
@@ -115,8 +120,8 @@ const LoginForm = () => {
 
       <div>
         <p className="text-xs text-greyTextSecondary">
-          {' '}
-          Don't have an account?{' '}
+          {" "}
+          Don't have an account?{" "}
           <Link to="/signup">
             <span className="text-primary cursor-pointer">Sign up</span>
           </Link>

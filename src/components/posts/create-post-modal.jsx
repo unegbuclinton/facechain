@@ -1,20 +1,20 @@
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /* import react dependencies */
-import { useRef, useState } from 'react';
+import { useRef, useState } from "react";
 
 /* import images */
-import backIcon from '../../assets/images/post/backIcon.svg';
-import closeModalIcon from '../../assets/images/post/closeModalIcon.svg';
-import mediaCloseIcon from '../../assets/images/post/mediaCloseIcon.svg';
-import photoIcon from '../../assets/images/post/photoIcon.svg';
-import videoIcon from '../../assets/images/post/videoIcon.svg';
+import backIcon from "../../assets/images/post/backIcon.svg";
+import closeModalIcon from "../../assets/images/post/closeModalIcon.svg";
+import mediaCloseIcon from "../../assets/images/post/mediaCloseIcon.svg";
+import photoIcon from "../../assets/images/post/photoIcon.svg";
+import videoIcon from "../../assets/images/post/videoIcon.svg";
 
 /* import styling */
-import { useDispatch } from 'react-redux';
-import { createNewPost } from '../../redux/postSlice';
-import './post.css';
+import { useDispatch } from "react-redux";
+import { createNewPost } from "../../redux/postSlice";
+import "./post.css";
 
 const CreatePostModal = ({ createPostFunc }) => {
   const photoInput = useRef();
@@ -24,7 +24,7 @@ const CreatePostModal = ({ createPostFunc }) => {
   const [hasText, setHasText] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
   const [previewVideo, setPreviewVideo] = useState(null);
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
   const [isLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const CreatePostModal = ({ createPostFunc }) => {
     setHasPhoto(false);
   };
   const activateBtn = (e) => {
-    if (e.target.value === '') {
+    if (e.target.value === "") {
       setHasText(false);
     } else {
       setHasText(true);
@@ -82,6 +82,7 @@ const CreatePostModal = ({ createPostFunc }) => {
     };
     dispatch(createNewPost(post));
     closeCreatePostModal();
+    console.log(description, previewImage);
   };
 
   return (
@@ -156,8 +157,8 @@ const CreatePostModal = ({ createPostFunc }) => {
               <button
                 className={
                   hasVideo || hasPhoto || hasText
-                    ? 'create-post-modal-btn active-btn w-full'
-                    : 'create-post-modal-btn w-full'
+                    ? "create-post-modal-btn active-btn w-full"
+                    : "create-post-modal-btn w-full"
                 }
                 onClick={submitPost}
               >
@@ -167,7 +168,7 @@ const CreatePostModal = ({ createPostFunc }) => {
                     className=" cursor-pointer fa-spin fa-pulse"
                   />
                 ) : (
-                  'Post'
+                  "Post"
                 )}
               </button>
             </div>
@@ -176,8 +177,8 @@ const CreatePostModal = ({ createPostFunc }) => {
                 onClick={openFile}
                 className={
                   hasPhoto
-                    ? 'media-action mb-4 active-media'
-                    : 'media-action mb-4'
+                    ? "media-action mb-4 active-media"
+                    : "media-action mb-4"
                 }
               >
                 <img
@@ -188,7 +189,7 @@ const CreatePostModal = ({ createPostFunc }) => {
                 />
                 <div>Photo</div>
                 <input
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   type="file"
                   ref={photoInput}
                   accept="image/*"
@@ -198,7 +199,7 @@ const CreatePostModal = ({ createPostFunc }) => {
               <div
                 onClick={openFile2}
                 className={
-                  hasVideo ? 'media-action active-media' : 'media-action'
+                  hasVideo ? "media-action active-media" : "media-action"
                 }
               >
                 <img
@@ -209,7 +210,7 @@ const CreatePostModal = ({ createPostFunc }) => {
                 />
                 <div>Video</div>
                 <input
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   type="file"
                   ref={videoInput}
                   accept="video/mp4,video/x-m4v,video/*"
@@ -242,7 +243,7 @@ const CreatePostModal = ({ createPostFunc }) => {
                 className=" cursor-pointer fa-spin fa-pulse"
               />
             ) : (
-              'POST'
+              "POST"
             )}
           </button>
         </div>
@@ -285,7 +286,7 @@ const CreatePostModal = ({ createPostFunc }) => {
               style={{ backgroundImage: `url(${previewVideo})` }}
             >
               <video src="previewVideo" width="320" height="240" controls>
-                {' '}
+                {" "}
                 Your browser does not support the video tag.
               </video>
               <img
@@ -309,7 +310,7 @@ const CreatePostModal = ({ createPostFunc }) => {
             />
             <div>Photo</div>
             <input
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               type="file"
               ref={photoInput}
               accept="image/*"
@@ -325,7 +326,7 @@ const CreatePostModal = ({ createPostFunc }) => {
             />
             <div>Video</div>
             <input
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               type="file"
               ref={videoInput}
               accept="video/mp4,video/x-m4v,video/*"

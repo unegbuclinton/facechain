@@ -1,29 +1,27 @@
 // Import Dependency
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 // Import Assets Images
-import avatar from '../../assets/images/header/avatar.jpg';
-import bell from '../../assets/images/header/bell.svg';
-import deposite from '../../assets/images/header/deposite.svg';
-import language from '../../assets/images/header/language.svg';
+import avatar from "../../assets/images/header/avatar.jpg";
+import bell from "../../assets/images/header/bell.svg";
+import deposite from "../../assets/images/header/deposite.svg";
+import language from "../../assets/images/header/language.svg";
 
 // Import Components
-import Icon from '../icons/icons';
+import Icon from "../icons/icons";
 
 // Import Styling
-import './header.css';
-
-// import { useLogout } from '../../hooks/auth/uselogout';
+import "./header.css";
 
 const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
   //   const { logout } = useLogout();
   const logout = () => {
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -37,7 +35,7 @@ const Header = () => {
             to="/home"
             className={(isActive) =>
               `flex h-nav-item items-center ${
-                isActive.isActive ? 'h-active-nav relative cursor-default' : ''
+                isActive.isActive ? "h-active-nav relative cursor-default" : ""
               }`
             }
           >
@@ -48,7 +46,7 @@ const Header = () => {
             to="/riders"
             className={(isActive) =>
               `flex h-nav-item items-center ${
-                isActive.isActive ? 'h-active-nav relative cursor-default' : ''
+                isActive.isActive ? "h-active-nav relative cursor-default" : ""
               }`
             }
           >
@@ -59,7 +57,7 @@ const Header = () => {
             to="/family-pools"
             className={(isActive) =>
               `flex h-nav-item items-center ${
-                isActive.isActive ? 'h-active-nav relative cursor-default' : ''
+                isActive.isActive ? "h-active-nav relative cursor-default" : ""
               }`
             }
           >
@@ -70,7 +68,7 @@ const Header = () => {
             to="/watchlist"
             className={(isActive) =>
               `flex h-nav-item items-center ${
-                isActive.isActive ? 'h-active-nav relative cursor-default' : ''
+                isActive.isActive ? "h-active-nav relative cursor-default" : ""
               }`
             }
           >
@@ -81,7 +79,7 @@ const Header = () => {
             to="/more"
             className={(isActive) =>
               `flex h-nav-item items-center ${
-                isActive.isActive ? 'h-active-nav relative' : ''
+                isActive.isActive ? "h-active-nav relative" : ""
               }`
             }
           >

@@ -1,40 +1,44 @@
-// Import Component 
+// Import Component
 import AddMobilePredictionButton from "./addmobilepreditionbutton";
 import AddPredictionButton from "./addpredictionbutton";
 import PredictionFilter from "./predictionfilter/filter";
-import PredictionList from "./predictionList";
 import EmptyPost from "../posts/emptypost";
 import SkeletonPredictions from "../skeletons/skeletonpredictions";
 
 // Import hooks
-import { usePredictionContext } from "../../hooks/prediction/usepredictioncontext";
-import { useEffect } from "react";
-import useFetchPredictions from "../../hooks/prediction/usefetchpredictions";
 
+import { useState } from "react";
+import { useEffect } from "react";
+import PredictionList from "./predictionList";
 
 const Prediction = () => {
-   const { isLoading, source, fetchPredictions } = useFetchPredictions();
-   const { predictions } = usePredictionContext();
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+  return (
+    <>
+      <PredictionFilter />
+      <AddMobilePredictionButton />
+      {isLoading ? (
+        <div className="predictions-list w-full flex flex-wrap justify-between">
+          {[1, 2, 3, 4].map((i) => (
+            <SkeletonPredictions key={i} />
+          ))}
+        </div>
+      ) : null}
 
-    useEffect(() => {
-        fetchPredictions();
-        return ()=> source.cancel('Predictions Unmounted')
-    }, []);
+      <PredictionList />
 
-    return ( 
-        <>
-            <PredictionFilter/>
-            <AddMobilePredictionButton />
-            {isLoading ? 
-                <div className='predictions-list w-full flex flex-wrap justify-between'>
-                     { [1,2,3,4].map(i => (<SkeletonPredictions key={i}/>)) }
-                 </div>
-            : null}
-            {predictions && predictions.length > 0 ? <PredictionList data={predictions}/> : <EmptyPost/>}
-            <AddPredictionButton/>
-        </>
-       
-    );
-}
- 
+      {/* <EmptyPost /> */}
+
+      <AddPredictionButton />
+    </>
+  );
+};
+
 export default Prediction;

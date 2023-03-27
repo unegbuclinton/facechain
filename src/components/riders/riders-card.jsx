@@ -1,11 +1,11 @@
 /* import react dependencies */
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 // Import Asset Images
-import exchange from '../../assets/images/familypools/binance.png';
+import exchange from "../../assets/images/familypools/binance.png";
 
 // import components
-import CircularBar from '../common/CircularBar/circularBar';
+import CircularBar from "../common/CircularBar/circularBar";
 
 const RiderCard = ({ data, type }) => {
   const riderList = data.map((rider, index) => (
@@ -15,9 +15,9 @@ const RiderCard = ({ data, type }) => {
     >
       <Link
         to={
-          type === 'Copytrade'
-            ? '/riders/riders-profile'
-            : '/riders/hedge-profile'
+          type === "Copytrade"
+            ? "/riders/riders-profile"
+            : "/riders/hedge-profile"
         }
       >
         <div className="flex justify-between border-b-2 border-[#525354] pb-5 items-center">
@@ -31,7 +31,7 @@ const RiderCard = ({ data, type }) => {
             </div>
             <div className="flex flex-col justify-evenly">
               <p className="text-lg">
-                @{type === 'Copytrade' ? rider.username : rider.hedge}
+                @{type === "Copytrade" ? rider.username : rider.hedge}
               </p>
               <div className="flex items-center">
                 <img className="mr-2" src={exchange} alt="" />
@@ -49,7 +49,7 @@ const RiderCard = ({ data, type }) => {
             <ul className="trader-list flex">
               {rider.portfolio.map((img, index) => {
                 return (
-                  <li key={index} className={index === 0 ? '' : 'ml-[-30px]'}>
+                  <li key={index} className={index === 0 ? "" : "ml-[-30px]"}>
                     <img
                       className="w-[48px] rounded-[50%] h-[48px] border-[1.5px] border-white object-cover"
                       src={img}

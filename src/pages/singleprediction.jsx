@@ -6,18 +6,18 @@ import StickyScroll from "../components/stickyscroll/stickyscroll";
 import SinglePrediction from "../components/predictions/singleprediction/singleprediction";
 
 const SinglePredictionPage = () => {
-    return (
-        <div className="bg-black min-h-screen overflow-auto ">
-            <StickyScroll>
-                 <Header />
-                 <Topbar title='Prediction'/>
-            </StickyScroll>
-            <div className="page-wrap w-[90%] md:w-[60%] m-auto mt-40 pt-6 pb-20">
-                <SinglePrediction/>
-            </div>
-            <BottomNavigation />
-        </div>
-    );
-}
- 
+  return (
+    <div className="bg-black min-h-screen overflow-auto ">
+      <StickyScroll>
+        <Header />
+        <Topbar title="Prediction" />
+      </StickyScroll>
+      <div className="page-wrap w-[90%] md:w-[60%] m-auto mt-40 pt-6 pb-20">
+        <SinglePrediction />
+      </div>
+      <BottomNavigation />
+    </div>
+  );
+};
+
 export default SinglePredictionPage;

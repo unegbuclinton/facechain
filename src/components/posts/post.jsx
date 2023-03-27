@@ -1,22 +1,22 @@
 /* import dependencies */
-import { useEffect, useState } from 'react';
-import Moment from 'react-moment';
+import { useEffect, useState } from "react";
+import Moment from "react-moment";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 /* import components */
-import Comment from '../common/comments/comment';
-import Like from './like';
-import More from './more';
-import MoreMobile from './more-mobile';
+import Comment from "../common/comments/comment";
+import Like from "./like";
+import More from "./more";
+import MoreMobile from "./more-mobile";
 
 /* import data */
-import avatar from '../../assets/images/header/avatar.jpg';
+import avatar from "../../assets/images/header/avatar.jpg";
 
 /* import styling */
-import { useSelector } from 'react-redux';
-import './post.css';
-import SharePost from './share/share';
+import { useSelector } from "react-redux";
+import "./post.css";
+import SharePost from "./share/share";
 
 const Post = () => {
   const { posts } = useSelector((state) => state.post);
@@ -29,26 +29,7 @@ const Post = () => {
     setIsMobile(window.innerWidth >= 320 && window.innerWidth <= 768);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.innerWidth]);
-  // const posts = [
-  //   {
-  //     fullname: 'Unegbu Clinton',
-  //     updated_at: new Date('2023-02-19T12:59-0500'),
-  //     user_id: '788488',
-  //     description:
-  //       ' Chainlink has released a beta of Chainlink Functions, a platform which will allow smart contracts to connect to any Web2 APIs. Functions will allow Web3 developers to more effectively leverage and utilize existing Web2 infrastructure - something that has been missing so far in Web3..',
-  //     postImage: postImg,
-  //     comment: '15',
-  //   },
-  //   {
-  //     fullname: 'Unegbu Kingsley',
-  //     updated_at: new Date('2023-02-19T12:59-0500'),
-  //     user_id: '788488',
-  //     description:
-  //       '  The country’s Insurance Regulatory and Development Authority of India (IRDAI) confirmed it would explore using blockchain and Web3 technologies to improve its insurance sector..',
-  //     postImage: postImg1,
-  //     comment: '15',
-  //   },
-  // ];
+  const { user } = useSelector((state) => state.auth);
   return (
     <>
       {posts.map(({ description, img, video, date }, index) => (
@@ -65,7 +46,7 @@ const Post = () => {
               />
               <div className="ml-2">
                 <p className="text-sm md:text-base font-normal mb-1">
-                  Unegbu Clinton
+                  {user.userName}
                 </p>
                 <p className="text-xs font-medium text-greyTextSecondary">
                   <Moment fromNow>{date}</Moment>
@@ -82,16 +63,18 @@ const Post = () => {
                     // action2={startEditModal}
                   />
                 )}
-                {isMobile && <MoreMobile user_id={index} />}
+                {isMobile && <MoreMobile />}
               </div>
             </div>
           </div>
           <div className="mb-6">
             <p className="text-sm md:text-base">{description}</p>
           </div>
-          <div className="w-full mb-6">
-            <img className="w-full h-64 object-cover" src={img} alt="" />
-          </div>
+          {img && (
+            <div className="w-full mb-6">
+              <img className="w-full h-64 object-cover" src={img} alt="" />
+            </div>
+          )}
           <div className="border-t-4 border-grey26 pt-5 flex justify-between md:justify-center relative text-xs md:text-sm ">
             <Like />
             <Link to={`/post/${index}`}>

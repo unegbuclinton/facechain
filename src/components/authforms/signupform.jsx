@@ -1,8 +1,14 @@
-// Import Dependency 
-import { faEye, faEyeSlash, faCheck, faSpinner, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, } from 'react';
-import { Link} from 'react-router-dom';
+// Import Dependency
+import {
+  faEye,
+  faEyeSlash,
+  faCheck,
+  faSpinner,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Import Asset Images
 import googleIcon from "../../assets/images/login/google-icon.svg";
@@ -13,11 +19,12 @@ import "./auth.css";
 //import helper functions
 import passwordStrength from "./passwordstrength";
 
-import useSignup from "../../hooks/auth/usesignup";
-
 //Import Components
 import ValidatorPill from "./validatorpill";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { createNewUser } from "../../redux/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
   const [show, setShow] = useState(false);
@@ -27,15 +34,15 @@ const SignupForm = () => {
   const [number, setNumber] = useState(false);
   const [special, setSpecial] = useState(false);
   const [showPills, setShowPills] = useState(false);
-  const { isLoading, error, signUp } = useSignup();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [password, setPassword] = useState("");
   const [fullname, setFullNames] = useState("");
   const [email, setEmail] = useState("");
-  const [username, setUserName] = useState("");
 
   // know if all checkPassword requirements are met
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const checkPasswordStrength = (e) => {
     passwordStrength.minlength.test(e.target.value)
       ? setMinLength(true)
@@ -62,17 +69,25 @@ const SignupForm = () => {
 
   function submitForm(e) {
     e.preventDefault();
-    if (fullname && email && username) {
+    // setIsLoading(true);
+    if (fullname && email) {
+      const data = {
+        fullname: fullname,
+        email: email,
+        password: password,
+      };
       if (password && checkPasswordStrength(e)) {
-        signUp(fullname, email, username, password);
+        dispatch(createNewUser(data));
+        navigate("/login");
+        // setIsLoading(false);
       }
     } else {
       toast.error("Please fill in all fields");
     }
   }
 
-    const handleFocus = (e) => setShowPills(true)
-    const toggleVisiblity = () => setShow(!show)
+  const handleFocus = (e) => setShowPills(true);
+  const toggleVisiblity = () => setShow(!show);
 
   return (
     <div className="text-white text-center w-full sm:w-96 mx-auto flex flex-col justify-evenly flex-1">
@@ -80,7 +95,7 @@ const SignupForm = () => {
       <h2 className="text-white font-buttons text-3xl font-extrabold">
         Sign Up
       </h2>
-      <form className="auth-form">
+      <form onSubmit={submitForm} className="auth-form">
         <div className="relative">
           <input
             className="auth-input placeholder-transparent peer"
@@ -103,7 +118,7 @@ const SignupForm = () => {
           />
           <label className="float-label transition-all">Email</label>
         </div>
-        <div className="relative">
+        {/* <div className="relative">
           <input
             className="auth-input placeholder-transparent peer"
             type="text"
@@ -113,7 +128,7 @@ const SignupForm = () => {
             onChange={(e) => setUserName(e.target.value)}
           />
           <label className="float-label transition-all">Username</label>
-        </div>
+        </div> */}
         <div
           className={`${
             showPills ? "pills-container" : "pills-container hide-pills"
@@ -145,7 +160,7 @@ const SignupForm = () => {
           />
         </div>
         <button
-          onClick={submitForm}
+          type="submit"
           className="bg-primary font-buttons text-black text-lg font-bold w-full rounded-full py-3 mt-5"
         >
           {isLoading ? (
@@ -158,14 +173,14 @@ const SignupForm = () => {
           )}
         </button>
       </form>
-      <div className="flex flex-row justify-between items-center text-greyTextSecondary">
+      <div className="flex flex-row justify-between items-center text-greyTextSecondary my-4">
         <hr className="w-1/3 border-t border-gray-500" />
         <p className="text-xs">Or Sign up with</p>
         <hr className="w-1/3 border-t border-gray-500" />
       </div>
       <div>
         <button
-          className="text-white text-base w-full border px-10 rounded-full flex flex-row justify-center py-3"
+          className="text-sm text-white sm:text-lg w-full border px-10 rounded-full flex flex-row justify-center py-3"
           disabled
         >
           <img className="self-center mr-5" src={googleIcon} alt="" />
