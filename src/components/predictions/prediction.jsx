@@ -2,7 +2,6 @@
 import AddMobilePredictionButton from "./addmobilepreditionbutton";
 import AddPredictionButton from "./addpredictionbutton";
 import PredictionFilter from "./predictionfilter/filter";
-import EmptyPost from "../posts/emptypost";
 import SkeletonPredictions from "../skeletons/skeletonpredictions";
 
 // Import hooks

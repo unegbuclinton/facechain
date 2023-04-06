@@ -9,14 +9,11 @@ import { useState, useEffect } from "react";
 import moreDots from "../../../assets/images/post/more-dots.svg";
 
 /** import helpers */
-import copyToClipBoard from "../../../helpers/clipboard";
-import { success, warning } from "../../common/toast/toast";
 
-const MoreOptions = ({ openModal, predictionId, user_id }) => {
+const MoreOptions = ({ openModal }) => {
   // const { user } = useAuthContext();
   // const { predictions } = usePredictionContext();
   const [isOpen, setIsOpen] = useState(false);
-  const [isCopied, setIsCopied] = useState(false);
 
   const toggleMore = () => {
     setIsOpen(!isOpen);
@@ -52,7 +49,7 @@ const MoreOptions = ({ openModal, predictionId, user_id }) => {
       document.removeEventListener("click", handleClick);
     };
   }, [isOpen]);
-
+  let check;
   return (
     <>
       <img
@@ -63,7 +60,7 @@ const MoreOptions = ({ openModal, predictionId, user_id }) => {
       />
       {isOpen && (
         <div className="relative">
-          {1 === 1 ? (
+          {check ? (
             <>
               <div className="w-60 absolute right-0 top-12 bg-[#1e1f21] border border-[#213f7d0f] rounded shadow-[2px_2px_20px_5px_rgb(0,0,0,0.05)] z-50">
                 <div

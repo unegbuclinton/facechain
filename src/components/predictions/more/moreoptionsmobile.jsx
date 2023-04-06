@@ -37,7 +37,7 @@ const MoreOptionsMobile = ({
       document.removeEventListener("click", handleClick);
     };
   }, [isOpen]);
-
+  let check;
   return (
     <>
       <img
@@ -48,7 +48,7 @@ const MoreOptionsMobile = ({
       />
       {isOpen && (
         <div className="more-modal">
-          {1 === 1 ? (
+          {check ? (
             <div className="w-[90%]">
               <div className="app-card w-full">
                 <div
