@@ -53,7 +53,7 @@ const LoginForm = () => {
 
   return (
     <div className="text-white text-center sm:px-40 flex flex-col justify-evenly flex-1">
-      <p className="font-buttons text-primary font-bold text-xl">MoonRider</p>
+      <p className="font-buttons text-primary font-bold text-xl">FaceChain</p>
       <h2 className="text-white font-buttons text-3xl font-extrabold">
         Log in
       </h2>

@@ -1,12 +1,12 @@
 // import asset image
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import moon from '../assets/images/splash/moon.svg';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import moon from "../assets/images/splash/moon.svg";
 
 // import component
-import LoginForm from '../components/authforms/loginform';
-import StarBackground from '../components/backgrounds/starbackground';
-import { resetPost } from '../redux/postSlice';
+import LoginForm from "../components/authforms/loginform";
+import StarBackground from "../components/backgrounds/starbackground";
+import { resetPost } from "../redux/postSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
