@@ -31,6 +31,7 @@ export const authSlice = createSlice({
             userName: state.authPass[i].fullname,
             userEmail: state.authPass[i].email,
           };
+
           return true; // stop searching
         }
         return null;

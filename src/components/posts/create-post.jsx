@@ -1,17 +1,22 @@
 /* import react dependencies */
-import { useState } from 'react';
+import { useState } from "react";
 
 /* import images */
-import photoIcon from '../../assets/images/post/photoIcon.svg';
-import videoIcon from '../../assets/images/post/videoIcon.svg';
+import photoIcon from "../../assets/images/post/photoIcon.svg";
+import videoIcon from "../../assets/images/post/videoIcon.svg";
 
 /* import component */
-import CreatPostModal from './create-post-modal';
+import CreatPostModal from "./create-post-modal";
 
 /* import styling */
-import './post.css';
+import "./post.css";
+import { useSelector } from "react-redux";
 
 const CreatePost = () => {
+  const {
+    user: { userName },
+  } = useSelector((state) => state.auth);
+
   const [createPostModal, setCreatePostModal] = useState(false);
 
   const openCreatePostModal = (value) => {
@@ -35,7 +40,7 @@ const CreatePost = () => {
             openCreatePostModal(true);
           }}
         >
-          <p className="text-[#7e838d]">What's on your mind</p>
+          <p className="text-[#7e838d]">{`What's on your mind ${userName}`}</p>
         </div>
         <div className="media-actions">
           <div

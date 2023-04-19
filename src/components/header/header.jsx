@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <header>
       <div className="hidden justify-center items-center sm:flex">
-        <p className="text-white font-buttons text-2xl font-bold">Facechain</p>
+        <p className="text-white font-buttons text-2xl font-bold">Moon rider</p>
       </div>
       <nav className="hidden lg:block">
         <ul className="flex text-greyTextSecondary font-medium">
